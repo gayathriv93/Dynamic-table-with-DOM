@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <title>
+        Table creation with JS & Dom
+    </title>
+    <style>
+        table,
+        tr,
+        th,
+        td {
+            border: 2px solid yellowgreen;
+            border-collapse: collapse;
+            color: hotpink;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 10px;
+            color: darkmagenta;
+        }
+
+        button {
+            background-color: rgb(122, 166, 255);
+            color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Dynamic Table using DOM</h1>
+</body>
+<script>
+    var obj_array = [['S.No', 'Name', 'Email', 'Action'], ['1', 'Gayathri', 'g3@gmail.com'],
+    ['2', 'Babu', 'bab@gmail.com'], ['3', 'xxx', 'xxx@gmail.com'], ['4', 'yyy', 'yyy@gmail.com']]
+    var b = document.getElementsByTagName("body")[0];
+    var table = document.createElement("table");
+
+
+    obj_array.forEach((ele, i) => {
+        // console.log(ele)
+        var tr = document.createElement("tr");
+
+        var td = document.createElement("td");
+        td.innerHTML = ele[0];
+        tr.appendChild(td)
+        var td = document.createElement("td");
+        td.innerHTML = ele[1];
+        tr.appendChild(td)
+        var td = document.createElement("td");
+        td.innerHTML = ele[2];
+        tr.appendChild(td)
+        var td = document.createElement("td");
+        td.innerHTML = (ele[3] ? ele[3] : `<button onClick="displayname('${ele[1]}')">Click me</button>`);
+        tr.appendChild(td)
+        table.appendChild(tr)
+
+    })
+
+    b.appendChild(table);
+    function displayname(x) {
+        alert(x)
+        // console.log(x)
+
+    }
+</script>
+
+</html>
